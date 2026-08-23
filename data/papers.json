@@ -21,5 +21,17 @@
       "Bimplified Bond Hyperpolarizability Model"
     ],
     "file": null
+  },
+  {
+    "title": "Recent Advances of Bond-Model-Based Nonlinear Photonic Sensors for Surface and Molecular Detection",
+    "date": "2026-06-20",
+    "description": "Nonlinear harmonic generation has transformed from a symmetry-selective spectroscopic method into a robust platform for surface-sensitive photonic sensing. This review focuses on recent progress in bond-model-based nonlinear photonic sensors, particularly the Simplified Bond Hyperpolarizability Model (SBHM), which provides a physically transparent framework connecting microscopic bond configurations to macroscopic secondharmonic generation (SHG) and third-harmonic generation (THG) responses. We describe how phenomenological tensor-based methods can be modified into bond-resolved models. These models make it possible to interpret polarization-resolved and rotationalanisotropy (RA) measurements in a way that is consistent with symmetry and uses fewer parameters.We look at how these ideas can be used in semiconductor interfaces, strained and oxidized silicon, doped ultrathin films, perovskites, layered materials, and molecular adsorption systems to detect organic contaminants. These advancements illustrate that bond-resolved harmonic generation offers an interpretable, scalable, and quantitatively robust methodology for next-generation surface and molecular photonic sensors.\nhttps://doi.org/10.1142/S0218863526300021",
+    "tags": [
+      "Simplified Bond Hyperpolarizability Model",
+      "Nonlinear Optics",
+      "Second Harmonic Generation",
+      "Molecular Detection"
+    ],
+    "file": null
   }
 ]
