@@ -14,10 +14,10 @@ const GITHUB_CONFIG = {
 
 // Identitas untuk ditampilkan di Beranda & footer — silakan sesuaikan.
 const SITE_PROFILE = {
-  name: "Nama Anda",
+  name: "Ahyad",
   role: "PhD Student — Fisika Kuantum Teori & Komputasi",
   affiliation: "Institut Pertanian Bogor (IPB)",
   collab: "Kerja sama riset dengan BRIN",
-  email: "email@contoh.ac.id",
+  email: "muhammad01ahyad@apps.ipb.ac.id",
   bio: "Meneliti fondasi teori sistem kuantum dan mengembangkan metode komputasi untuk mensimulasikan dinamikanya. Situs ini adalah ruang kerja sekaligus arsip publik dari penelitian, catatan, dan publikasi."
 };
