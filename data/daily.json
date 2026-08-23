@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "title": "Modified Bond Hyperpolarizability Model using Morse-Like Potential",
+    "date": "2026-08-23",
+    "description": "Sudah berhasil mendapatkan plot Suseptibilitas vs foton energy dan dibandingkan dengan beberapa profil hasil dari perhitungan DFT dan juga hasil dari eksperimen",
+    "tags": [
+      "potensial morse",
+      "nonlinear optics",
+      "higher Harmonic hyperpolarisability",
+      "quantum mechanics"
+    ],
+    "file": "uploads/daily/2026-08-23-modified-bond-hyperpolarizability-model-using-morse-like-pot-document-2.pdf"
+  }
+]
