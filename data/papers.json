@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "title": "A Novel Sensing Method to Detect Malachite Green Contaminant on Silicon Substrate Using Nonlinear Optics",
+    "date": "2024-09-27",
+    "description": "We propose a nonlinear-optics-based nanosensor to detect malachite green (MG) contaminants on semiconductor interfaces such as silicon (Si). Applying the simplified bond hyperpolarizability model (SBHM), we simplified the second-harmonic generation (SHG) analysis of an MG-Si(111) surface and were able to validate our model by reproducing experimental rotational anisotropy (RA) SHG experiments. For the first time, density functional theory (DFT) calculations using ultrasoft pseudopotentials were implemented to obtain the molecular configuration and bond vector orientation required by the SBHM to investigate and predict the second-harmonic generation contribution for an MG-Si 001 surface. We show that the SBHM model significantly reduces the number of independent components in the nonlinear tensor of the MG-Si(111) interface, opening up the possibility for real-time and non-destructive contaminant detection at the nanoscale. In addition, we derive an explicit formula for the SHG far field, demonstrating its applicability for various input polarization angles. Finally, an RASHG signal can be enhanced through a simulated photonic crystal cavity up to 4000 times for more sensitivity of detection. Our work can stimulate more exploration using nonlinear optical methods to detect and analyze surface-bound contaminants, which is beneficial for environmental monitoring, especially for mitigating pollution from textile dyes, and underscores the role of nonlinear optics in real-time ambient-condition applications.\nhttps://www.mdpi.com/2072-666X/15/10/1227",
+    "tags": [
+      "nonlinear optics",
+      "malachite green",
+      "second harmonic generation",
+      "simplified bond hyperpolarizability model"
+    ],
+    "file": null
+  }
+]
