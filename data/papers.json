@@ -33,5 +33,17 @@
       "Molecular Detection"
     ],
     "file": null
+  },
+  {
+    "title": "Nanoscale Organic Contaminant Detection at the Surface Using Nonlinear Bond Model",
+    "date": "2025-02-02",
+    "description": "Abstract\nEnvironmental pollution from organic dyes such as malachite green and rhodamine B poses significant threats to ecosystems and human health due to their toxic properties. The rapid detection of these contaminants with high sensitivity and selectivity is crucial and can be effectively achieved using nonlinear optical methods. In this study, we combine the Simplified Bond Hyperpolarizability Model (SBHM) and molecular docking (MD) simulations to investigate the Second-Harmonic Generation (SHG) intensity of organic dyes on a silicon (Si(001)) substrate for nanoscale pollutant detection. Our simulations show good agreement with rotational anisotropy (RA) SHG intensity experimental data across all polarization angles, with a total error estimate of 3%. We find for the first time that the SBHM not only identifies the different organic pollutant dyes on the surface, as in conventional SHG detection, but can also determine their relative orientation and different concentrations on the surface. Meanwhile, MD simulations reveal that rhodamine B shows a strong adsorption affinity of −10.4kcal/mol\n to a single-layer graphene oxide (GO) substrate, primarily through 𝜋\n-𝜋\n stacking interactions (36 instances) and by adopting a perpendicular molecular orientation. These characteristics significantly enhance SHG sensitivity. A nonlinear susceptibility analysis reveals good agreement between the SBHM and group theory. The susceptibility tensors confirm that the dominant contributions to the SHG signal arise from both the molecular structure and the surface interactions. This underscores the potential of GO-coated silicon substrates for detecting trace levels of organic pollutants with interaction distances ranging from 3.75Å\n to 5.81Å\n. This approach offers valuable applications in environmental monitoring, combining the sensitivity of SHG with the adsorption properties of GO for nanoscale detection.",
+    "tags": [
+      "nonlinear optics",
+      "organic dyes",
+      "second-harmonic generation (SHG)",
+      "simplified bond hyperpolarizability model (SBHM)"
+    ],
+    "file": null
   }
 ]
