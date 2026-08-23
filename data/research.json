@@ -1,1 +1,14 @@
-[]
+[
+  {
+    "title": "Modified Bond Hyperpolarizability Model using Morse-Like Potential",
+    "date": "2026-08-23",
+    "description": "Telah berhasil membangun secara formulasi untuk hyperpolarisabilitas orde ke-n yang mengindikasikan orde harmonik ke-n dari fenomena nonlinear optics. Model ini mengasumsikan bahwa elektron dalam ikatan molekul mengalami potensial yang bersifat anharmonis yaitu Morse-Like Potensial. Potensial inilah yang menyebabkan terjadinya suku nonlinear optik dan bisa didapatkan hyperpolarisabilitas orde ke-n. Pada model sebelumnya, Simplified Bond Hyperpolarisability Model, hyperpolarisabilitas yang digunakan yaitu hasil dari fitting data eksperimen, sedangkan motivasi dari penelitian ini adalah mendapatkan nilai hyperpolarisabilitas dari hasil perhitungan secara analitik/numerik. Jadi, penelitian ini tetap menggandeng metode sebelumnya berkaitan dengan Model vektor ikatan yang digunakan untuk menghitung semua komponen tensor dari molekul yang mengalami fenomena nonlinear optik.",
+    "tags": [
+      "potensial morse",
+      "nonlinear optics",
+      "higher Harmonic hyperpolarisability",
+      "quantum mechanics"
+    ],
+    "file": null
+  }
+]
