@@ -7,9 +7,9 @@
   - branch : biasanya "main"
 */
 const GITHUB_CONFIG = {
-  owner: "USERNAME_GITHUB_ANDA",
-  repo: "REPO_SITUS_ANDA",
-  branch: "main"
+  owner: "muhammad01ahyad-dev",
+  repo: "portal-akademik",
+  branch: "master"
 };
 
 // Identitas untuk ditampilkan di Beranda & footer — silakan sesuaikan.
