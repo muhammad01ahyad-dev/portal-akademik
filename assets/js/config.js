@@ -9,7 +9,7 @@
 const GITHUB_CONFIG = {
   owner: "muhammad01ahyad-dev",
   repo: "portal-akademik",
-  branch: "master"
+  branch: "main"
 };
 
 // Identitas untuk ditampilkan di Beranda & footer — silakan sesuaikan.
