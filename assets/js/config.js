@@ -1,0 +1,23 @@
+/*
+  KONFIGURASI SITUS
+  ------------------
+  Isi 3 nilai di bawah ini sesuai repo GitHub Anda, lalu commit & push.
+  - owner  : username GitHub Anda (bukan nama organisasi, kecuali repo ada di org)
+  - repo   : nama repository tempat situs ini di-host
+  - branch : biasanya "main"
+*/
+const GITHUB_CONFIG = {
+  owner: "USERNAME_GITHUB_ANDA",
+  repo: "REPO_SITUS_ANDA",
+  branch: "main"
+};
+
+// Identitas untuk ditampilkan di Beranda & footer — silakan sesuaikan.
+const SITE_PROFILE = {
+  name: "Nama Anda",
+  role: "PhD Student — Fisika Kuantum Teori & Komputasi",
+  affiliation: "Institut Pertanian Bogor (IPB)",
+  collab: "Kerja sama riset dengan BRIN",
+  email: "email@contoh.ac.id",
+  bio: "Meneliti fondasi teori sistem kuantum dan mengembangkan metode komputasi untuk mensimulasikan dinamikanya. Situs ini adalah ruang kerja sekaligus arsip publik dari penelitian, catatan, dan publikasi."
+};
