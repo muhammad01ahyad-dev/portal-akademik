@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beranda — Ruang Riset Fisika Kuantum</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/common.js"></script>
+
+<section class="hero">
+  <div id="heroWaveMount"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">profil</p>
+    <h1>Riset fisika kuantum <span class="accent">teori & komputasi</span>, dari lab ke arsip publik.</h1>
+    <p class="lede" id="bioText"></p>
+    <div class="hero-tags">
+      <span id="tagRole"></span>
+      <span id="tagAffil"></span>
+      <span id="tagCollab"></span>
+    </div>
+  </div>
+</section>
+
+<main class="wrap">
+  <p class="eyebrow">peta situs</p>
+  <h2 style="font-size:22px;margin-bottom:6px;">Jelajahi arsip</h2>
+  <p style="max-width:600px;">Semua konten di bawah ini dapat dibaca dan diunduh langsung. Pembaruan dilakukan dari panel admin dan tersinkron otomatis lewat repo GitHub.</p>
+
+  <div class="grid" id="cardGrid"></div>
+</main>
+
+<script>
+document.getElementById("heroWaveMount").outerHTML = heroWaveSVG();
+renderNav("index.html");
+
+document.getElementById("bioText").textContent = SITE_PROFILE.bio;
+document.getElementById("tagRole").textContent = SITE_PROFILE.role;
+document.getElementById("tagAffil").textContent = SITE_PROFILE.affiliation;
+document.getElementById("tagCollab").textContent = SITE_PROFILE.collab;
+
+const CARDS = [
+  { n:"01", href:"research.html",       title:"Progress Penelitian", desc:"Perkembangan proyek riset utama: hipotesis, metode, dan temuan berjalan." },
+  { n:"02", href:"daily.html",          title:"Progress Harian",     desc:"Log harian kegiatan riset — bacaan, eksperimen kecil, dan catatan berpikir." },
+  { n:"03", href:"papers.html",         title:"Paper",               desc:"Naskah, preprint, dan publikasi yang siap dibaca atau diunduh." },
+  { n:"04", href:"computation.html",    title:"Komputasi",           desc:"Kode simulasi, notebook, dan hasil komputasi numerik/kuantum." },
+  { n:"05", href:"lecture-notes.html",  title:"Catatan Kuliah",      desc:"Ringkasan materi perkuliahan yang diikuti selama studi." },
+  { n:"06", href:"teaching-notes.html", title:"Catatan Mengajar",    desc:"Materi dan modul yang digunakan saat mengajar/asisten." },
+  { n:"07", href:"books.html",          title:"Buku",                desc:"Buku dan referensi penting yang siap dipublikasikan." },
+];
+document.getElementById("cardGrid").innerHTML = CARDS.map(c => `
+  <a class="card" href="${c.href}">
+    <div class="idx">${c.n}</div>
+    <h3>${c.title}</h3>
+    <p>${c.desc}</p>
+    <div class="go">buka bagian →</div>
+  </a>
+`).join("");
+
+renderFooter();
+</script>
+</body>
+</html>

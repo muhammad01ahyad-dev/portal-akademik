@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Ruang Riset Fisika Kuantum</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/github-api.js"></script>
+
+<div id="navMount"></div>
+
+<section class="page-head wrap">
+  <p class="eyebrow">akses</p>
+  <h1>Panel Admin</h1>
+  <p style="max-width:640px;">Gunakan Personal Access Token (PAT) GitHub Anda untuk masuk. Token hanya disimpan sementara di tab browser ini (sessionStorage) dan tidak pernah dikirim ke mana pun selain <code>api.github.com</code>.</p>
+</section>
+
+<main class="wrap" style="padding-bottom:80px;">
+
+  <!-- LOGIN -->
+  <div id="loginPanel" class="panel" style="max-width:520px;">
+    <div id="loginMsg"></div>
+    <div class="field">
+      <label>Personal Access Token (repo scope / fine-grained: Contents Read & Write)</label>
+      <input type="password" id="patInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+    </div>
+    <button class="btn btn-primary" id="loginBtn">Masuk</button>
+    <p style="font-size:12px;margin-top:16px;">Belum punya token? Buka
+      <a href="https://github.com/settings/tokens?type=beta" target="_blank" rel="noopener" style="color:var(--cyan)">GitHub → Settings → Developer settings → Fine-grained tokens</a>,
+      beri akses ke repo <code id="repoNameHint"></code> dengan izin <strong>Contents: Read and write</strong>.
+    </p>
+  </div>
+
+  <!-- ADMIN AREA -->
+  <div id="adminArea" style="display:none;">
+    <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;margin-bottom:20px;">
+      <div id="whoami" style="font-family:var(--font-mono);font-size:13px;color:var(--text-dim);"></div>
+      <button class="btn" id="logoutBtn">Keluar</button>
+    </div>
+
+    <div class="tabs" id="catTabs"></div>
+
+    <div id="formMsg"></div>
+
+    <div class="panel" style="margin-bottom:26px;">
+      <h3 style="margin-top:0;font-size:16px;">Tambah entri baru</h3>
+      <form id="entryForm">
+        <div class="field"><label>Judul</label><input type="text" id="fTitle" required></div>
+        <div class="field"><label>Tanggal</label><input type="date" id="fDate" required></div>
+        <div class="field"><label>Deskripsi singkat</label><textarea id="fDesc"></textarea></div>
+        <div class="field"><label>Tag (pisahkan dengan koma)</label><input type="text" id="fTags" placeholder="mis. kuantum, simulasi, teori"></div>
+        <div class="field"><label>File (PDF, kode, dokumen — opsional)</label><input type="file" id="fFile"></div>
+        <button class="btn btn-primary" type="submit" id="submitBtn">Simpan & Publikasikan</button>
+      </form>
+    </div>
+
+    <h3 style="font-size:16px;">Entri tersimpan</h3>
+    <div class="entry-list" id="adminList"></div>
+  </div>
+
+</main>
+
+<script>
+renderNav("admin.html");
+renderFooter();
+document.getElementById("repoNameHint").textContent = `${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}`;
+
+const CATEGORIES = [
+  { key:"research",       label:"Progress Penelitian" },
+  { key:"daily",          label:"Progress Harian" },
+  { key:"papers",         label:"Paper" },
+  { key:"computation",    label:"Komputasi" },
+  { key:"lecture-notes",  label:"Catatan Kuliah" },
+  { key:"teaching-notes", label:"Catatan Mengajar" },
+  { key:"books",          label:"Buku" }
+];
+let activeCat = CATEGORIES[0].key;
+let currentManifest = { items: [], sha: null };
+
+function showMsg(elId, text, ok){
+  document.getElementById(elId).innerHTML = `<div class="msg ${ok?'msg-ok':'msg-err'}">${text}</div>`;
+}
+function clearMsg(elId){ document.getElementById(elId).innerHTML = ""; }
+
+function renderTabs(){
+  document.getElementById("catTabs").innerHTML = CATEGORIES.map(c =>
+    `<button class="tab-btn ${c.key===activeCat?'active':''}" data-cat="${c.key}">${c.label}</button>`
+  ).join("");
+  document.querySelectorAll(".tab-btn").forEach(b=>{
+    b.addEventListener("click", () => { activeCat = b.dataset.cat; renderTabs(); loadAdminList(); });
+  });
+}
+
+async function loadAdminList(){
+  const list = document.getElementById("adminList");
+  list.innerHTML = `<div class="loading">Memuat…</div>`;
+  try{
+    currentManifest = await GH.getManifest(activeCat);
+    if(currentManifest.items.length === 0){
+      list.innerHTML = `<div class="empty-state">Belum ada entri di kategori ini.</div>`;
+      return;
+    }
+    const sorted = currentManifest.items.slice().sort((a,b)=> new Date(b.date||0)-new Date(a.date||0));
+    list.innerHTML = sorted.map((item, idxSorted) => {
+      const realIdx = currentManifest.items.indexOf(item);
+      const tags = (item.tags||[]).map(t=>`<span>${escapeHTML(t)}</span>`).join("");
+      return `
+        <article class="entry">
+          <div class="entry-top">
+            <h3>${escapeHTML(item.title)}</h3>
+            <span class="date">${fmtDate(item.date)}</span>
+          </div>
+          ${item.description? `<p class="desc">${escapeHTML(item.description)}</p>`:""}
+          ${tags? `<div class="entry-tags">${tags}</div>`:""}
+          <div class="entry-actions">
+            ${item.file? `<a class="btn" href="https://raw.githubusercontent.com/${GITHUB_CONFIG.owner}/${GITHUB_CONFIG.repo}/${GITHUB_CONFIG.branch}/${item.file}" target="_blank" rel="noopener">Lihat file</a>`:""}
+            <button class="btn btn-danger" data-idx="${realIdx}" data-file="${item.file||''}">Hapus</button>
+          </div>
+        </article>`;
+    }).join("");
+
+    list.querySelectorAll(".btn-danger").forEach(b=>{
+      b.addEventListener("click", () => deleteEntry(parseInt(b.dataset.idx), b.dataset.file));
+    });
+  }catch(err){
+    list.innerHTML = `<div class="empty-state">${err.message}</div>`;
+  }
+}
+
+async function deleteEntry(idx, filePath){
+  if(!confirm("Hapus entri ini beserta filenya (jika ada)? Tindakan ini membuat commit baru di repo.")) return;
+  try{
+    const items = currentManifest.items.slice();
+    items.splice(idx, 1);
+    const saved = await GH.saveManifest(activeCat, items, currentManifest.sha, `admin: hapus entri di ${activeCat}`);
+    currentManifest.sha = saved.content.sha;
+    if(filePath){
+      const f = await GH.getFile(filePath);
+      if(f) await GH.deleteFile(filePath, f.sha, `admin: hapus file ${filePath}`);
+    }
+    showMsg("formMsg", "Entri berhasil dihapus.", true);
+    loadAdminList();
+  }catch(err){
+    showMsg("formMsg", `Gagal menghapus: ${err.message}`, false);
+  }
+}
+
+function fileToBase64(file){
+  return new Promise((resolve, reject)=>{
+    const r = new FileReader();
+    r.onload = () => resolve(r.result);
+    r.onerror = reject;
+    r.readAsDataURL(file);
+  });
+}
+function slugify(s){
+  return s.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/(^-|-$)/g,'').slice(0,60) || 'entri';
+}
+
+document.getElementById("entryForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  clearMsg("formMsg");
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true; submitBtn.textContent = "Menyimpan…";
+
+  try{
+    const title = document.getElementById("fTitle").value.trim();
+    const date = document.getElementById("fDate").value;
+    const description = document.getElementById("fDesc").value.trim();
+    const tags = document.getElementById("fTags").value.split(",").map(t=>t.trim()).filter(Boolean);
+    const fileInput = document.getElementById("fFile");
+
+    let filePath = null;
+    if(fileInput.files[0]){
+      const file = fileInput.files[0];
+      const base64 = await fileToBase64(file);
+      const safeName = `${date}-${slugify(title)}-${slugify(file.name.replace(/\.[^.]+$/,''))}${(file.name.match(/\.[^.]+$/)||[''])[0]}`;
+      filePath = `uploads/${activeCat}/${safeName}`;
+      await GH.putBinaryFile(filePath, base64, `admin: upload file untuk "${title}"`);
+    }
+
+    const manifest = await GH.getManifest(activeCat);
+    manifest.items.push({ title, date, description, tags, file: filePath });
+    await GH.saveManifest(activeCat, manifest.items, manifest.sha, `admin: tambah entri "${title}" di ${activeCat}`);
+
+    showMsg("formMsg", "Berhasil disimpan dan dipublikasikan.", true);
+    e.target.reset();
+    loadAdminList();
+  }catch(err){
+    showMsg("formMsg", `Gagal menyimpan: ${err.message}`, false);
+  }finally{
+    submitBtn.disabled = false; submitBtn.textContent = "Simpan & Publikasikan";
+  }
+});
+
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const pat = document.getElementById("patInput").value.trim();
+  if(!pat) return;
+  clearMsg("loginMsg");
+  try{
+    GH.setToken(pat);
+    const user = await GH.verifyToken();
+    document.getElementById("whoami").textContent = `Masuk sebagai @${user.login}`;
+    document.getElementById("loginPanel").style.display = "none";
+    document.getElementById("adminArea").style.display = "block";
+    renderTabs();
+    loadAdminList();
+  }catch(err){
+    GH.clearToken();
+    showMsg("loginMsg", err.message, false);
+  }
+});
+
+document.getElementById("logoutBtn").addEventListener("click", () => {
+  GH.clearToken();
+  document.getElementById("adminArea").style.display = "none";
+  document.getElementById("loginPanel").style.display = "block";
+  document.getElementById("patInput").value = "";
+});
+
+// Auto-login jika token masih ada di sessionStorage (belum tutup tab)
+(async () => {
+  if(GH.isLoggedIn()){
+    try{
+      const user = await GH.verifyToken();
+      document.getElementById("whoami").textContent = `Masuk sebagai @${user.login}`;
+      document.getElementById("loginPanel").style.display = "none";
+      document.getElementById("adminArea").style.display = "block";
+      renderTabs();
+      loadAdminList();
+    }catch(e){ GH.clearToken(); }
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Komputasi — Ruang Riset Fisika Kuantum</title>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/common.js"></script>
+<script src="assets/js/public-list.js"></script>
+
+<div id="navMount"></div>
+
+<section class="page-head wrap">
+  <p class="eyebrow">komputasi</p>
+  <h1>Komputasi</h1>
+  <p style="max-width:620px;">Kode simulasi, notebook, dan hasil komputasi numerik maupun kuantum.</p>
+</section>
+
+<main class="wrap">
+  <div class="orbit-divider"><span class="ring"></span><span class="line"></span></div>
+  <div class="entry-list" id="list"></div>
+</main>
+
+<script>
+renderNav("computation.html");
+loadCategory("computation", "list");
+renderFooter();
+</script>
+</body>
+</html>
