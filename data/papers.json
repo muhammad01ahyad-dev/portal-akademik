@@ -45,5 +45,17 @@
       "simplified bond hyperpolarizability model (SBHM)"
     ],
     "file": null
+  },
+  {
+    "title": "Deteksi Pewarna Organik di Permukaan menggunakan Metode Optika Nonlinier Generasi Harmonik Kedua",
+    "date": "2025-02-02",
+    "description": "Pencemaran lingkungan akibat pewarna organik seperti Malachite Green dan Rhodamine B menimbulkan ancaman signifikan terhadap ekosistem dan kesehatan manusia karena sifat toksiknya. Deteksi cepat terhadap kontaminan ini dengan sensitivitas dan selektivitas tinggi sangatlah penting dan dapat dilakukan secara efektif menggunakan metode optik nonlinier. Dalam penelitian ini, kami menggunakan Simplified Hyperpolarizability Model (SBHM) untuk menyelidiki intensitas Second Harmonic Generation (SHG) dari pewarna organik pada substrat silikon Si(001) untuk deteksi polutan skala nano. Hasil penelitian kami menunjukkan bahwa dengan pendekatan SBHM didapatkan vector ikatan dan tensor rank-3 dari substrat silikon dan pewarna organik Malachite Green (MG) serta Rhodamine B yang sesuai dengan simetri berdasarkan analisis teori grup. SHG dapat mengidentifikasi pewarna organik berdasarkan fitur simetri uniknya, dimana hasil simulasi dan eksperimen untuk Malachite Green serta Rhodamine B menunjukkan pola intensitas SHG yang sesuai di semua sudut polarisasi dengan rata-rata ketepatan yang cukup signifikan. Ketika konsentrasi Malachite Green (MG) meningkat, intensitas SHG juga meningkat seiring dengan nilai suseptibilitasnya, sementara suseptibilitas silikon menurun. Untuk intensitas SHG baik pada MG maupun Rhodamine B, intensitas tertinggi diamati pada sudut polarisasi-p. Hal ini menunjukkan bahwa orientasi molekul yang berkontribusi terhadap intensitas SHG sejajar dengan arah sumbu Z. Pendekatan yang kami lakukan dapat diterapkan untuk mendeteksi polutan organik di permukaan pada skala nano.\nhttps://repository.ipb.ac.id/handle/123456789/161021",
+    "tags": [
+      "Nonlinear Optics",
+      "Simplified Bond Hyperpolarizability Model",
+      "Pewarna Organik",
+      "Second Harmonic Heneration"
+    ],
+    "file": null
   }
 ]
