@@ -10,5 +10,16 @@
       "simplified bond hyperpolarizability model"
     ],
     "file": null
+  },
+  {
+    "title": "Third-harmonic generation in tetragonal methylammonium lead iodide (MAPbI3) perovskite",
+    "date": "2025-03-21",
+    "description": "Methylammonium lead iodide (MAPbI3) is a key candidate for metal halide perovskite (MHP) solar cells due to its phase-dependent behavior and intriguing optoelectronic properties. Second-harmonic generation (SHG) is commonly employed to study their surface properties at the nanoscale. Meanwhile, third-harmonic generation (THG) allows unique, to the best of our knowledge, access to bulk properties even if the material is centrosymmetric. However, THG in perovskites has so far never been studied within the framework of the nonlinear bond model. Therefore, in this work, we develop the simplified bond-hyperpolarizability model (SBHM) to analyze THG in tetragonal  at the surface and bulk. To validate the bond model assumption that THG radiation is emitted with the oscillatory motion of bonds in covalent structures, we apply density functional theory to visualize the charge density of tetragonal . We further introduce effective bond hyperpolarizability, termed  in THG, to simplify the otherwise complex nonlinear optical interaction and study the fourth-rank tensor irreducible elements and predict the rotational anisotropy third-harmonic generation experiment. Using the SBHM, we show that MHP characterization at the bulk becomes simpler and more accessible through THG and, when combined with SHG, can produce a heuristic understanding of the nonlinear processes that shape the rotational anisotropy data. Our results broaden the scope for high-efficient design of solar cells through better understanding of real-time surface monitoring at the nanoscale, defect detection, and surface reconstruction in MHPs.\nhttps://doi.org/10.1364/JOSAB.566006",
+    "tags": [
+      "Third Harmonic Generation",
+      "Perovskite",
+      "Bimplified Bond Hyperpolarizability Model"
+    ],
+    "file": null
   }
 ]
